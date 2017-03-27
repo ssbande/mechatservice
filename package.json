@@ -1,0 +1,33 @@
+{
+    "name": "global",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "prestart": "gulp",
+        "start": "node build/index",
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "publish-host": "node publishhost",
+        "stop-host": "node stophost"
+    },
+    "author": "shreyas bande",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^6.0.46",
+        "gulp": "^3.9.1",
+        "gulp-connect": "^5.0.0",
+        "gulp-load-plugins": "^1.4.0",
+        "gulp-sourcemaps": "^2.2.2",
+        "gulp-tslint": "^7.0.1",
+        "gulp-typescript": "^3.1.3",
+        "tslint": "^4.2.0",
+        "typescript": "^2.1.4"
+    },
+    "dependencies": {
+        "body-parser": "^1.17.1",
+        "express": "^4.15.2",
+        "jsonwebtoken": "^7.3.0",
+        "pg": "^6.1.4",
+        "underscore": "^1.8.3"
+    }
+}
