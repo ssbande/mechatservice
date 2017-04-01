@@ -18,7 +18,7 @@ class LoginService {
       let userQuery = `select * from admin.user where name='${this.username}' and password='${this.password}' and is_active = true;`;
 
       db.fetch(userQuery)
-        .then((result) => {
+        .then((result: any) => {
           if (_.isEmpty(result)) {
             return reject({
               message: 'invalid credentials'
