@@ -1,6 +1,7 @@
 'use strict';
 import {DataAccess} from './../../dataaccess/dataaccess';
 import * as _ from 'underscore';
+import * as jwt from 'jsonwebtoken';
 
 class LoginService {
   private username: string;
@@ -23,6 +24,11 @@ class LoginService {
               message: 'invalid credentials'
             });
           }
+
+          result = result[0];
+          console.log('result: ', result);
+          const token = jwt.sign({id: result.name}, 'super.super.secret.shhh', {expiresIn: 60});
+          result['token'] = token;
           return resolve(result);
         })
         .catch((err) => {
