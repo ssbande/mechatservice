@@ -6,7 +6,7 @@ class DataAccess {
   private db: any;
 
   constructor() {
-    this.db = 'postgres://postgres:12345@localhost:5432/letstalk';
+    this.db = 'postgres://postgres:12345@localhost:5432/mechat';
   }
 
   public fetch(query) {
