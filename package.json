@@ -28,6 +28,7 @@
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
     "pg": "^6.1.4",
+    "pg-transaction": "^1.0.4",
     "underscore": "^1.8.3"
   }
 }
