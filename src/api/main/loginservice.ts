@@ -32,32 +32,34 @@ class LoginService {
           result['token'] = token;
 
           this.userDetail = result;
-          return result;
-          // return resolve(result);
-        })
-        .then((result: any) => {
-          // update the is online status for the user.
-          return db.createTransaction();
-        })
-        .then(() => {
-          const q = {
-              key: 'updateOnlineStatusQuery',
-              value: {
-                text: 'UPDATE admin.user SET is_online = $1',
-                values: [true]
-              }
-            };
 
-            return db.executeQuery(q);
-        })
-        .then(() => {
-          console.log('status updated successfully');
-          return db.commitTransaction();
-        })
-        .then(() => {
-          console.log('update complete');
-          this.userDetail.is_online = true;
-          return resolve(this.userDetail);
+          db.createTransaction()
+            .then(() => {
+              const q = {
+                key: 'updateOnlineStatusQuery',
+                value: {
+                  text: 'UPDATE admin.user SET is_online = $1',
+                  values: [true]
+                }
+              };
+
+              return db.executeQuery(q);
+            })
+            .then(() => {
+              console.log('status updated successfully');
+              return db.commitTransaction();
+            })
+            .then(() => {
+              console.log('update complete');
+              this.userDetail.is_online = true;
+              return resolve(this.userDetail);
+            })
+            .catch((err) => {
+              console.log('Error updating online status: ' + err.message);
+              return reject({
+                'message': err.message
+              });
+            });
         })
         .catch((err) => {
           return reject({
