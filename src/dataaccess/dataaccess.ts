@@ -14,6 +14,8 @@ class DataAccess {
     this.txn    = null;
     this.done   = null;
     this.client = null;
+    // this.db = 'postgres://postgres:12345@localhost:5432/mechat';
+
   }
 
   public fetch(query) {
