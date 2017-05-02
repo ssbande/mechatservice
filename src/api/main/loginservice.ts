@@ -52,8 +52,24 @@ class LoginService {
             .then(() => {
               console.log('update complete');
               this.userDetail.is_online = true;
+              // return true;
               return resolve(this.userDetail);
             })
+            // .then((updateStatus) => {
+            //   console.log('fetching online users');
+            //   let fetchUsers = `select * from admin.user where is_active = true and is_online = true;`;
+            //   return db.fetch(fetchUsers);
+            // })
+            // .then((onlineUsers) => {
+            //   this.onlineUsers = onlineUsers;
+            //   const response = {
+            //     currentUser: this.userDetail,
+            //     onlineUsers: this.onlineUsers
+            //   };
+
+            //   console.log('Online Users: ', JSON.stringify(onlineUsers));
+            //   return resolve(response);
+            // })
             .catch((err) => {
               console.log('Error updating online status: ' + err.message);
               return reject({

@@ -4,8 +4,8 @@ let router = express.Router();
 import { MainController } from './../api/main/MainController';
 const mainInstance = new MainController();
 
-router.get('/test', (req, res, next) => {
- return mainInstance.test(req, res);
+router.get('/getOnlineUsers', (req, res, next) => {
+ return mainInstance.getOnlineUsers(req, res);
 });
 
 router.post('/login', (req, res, next) => {
